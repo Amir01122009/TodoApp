@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoApp.MainPage"
+             Title="Список задач">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label Text="Добавить новую задачу" FontSize="18" />
+        <Entry x:Name="TaskEntry" Placeholder="Название задачи" />
+        <Button Text="Добавить" Clicked="OnAddTaskClicked" />
+        <Button Text="Сохранить задачи" Clicked="OnSaveTasksClicked" />
+        <CollectionView x:Name="TaskList" ItemsSource="{Binding Tasks}" HeightRequest="400">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout Padding="10" Spacing="10">
+                        <CheckBox IsChecked="{Binding IsCompleted}" CheckedChanged="OnTaskCheckedChanged" VerticalOptions="Center" />
+                        <Label Text="{Binding Title}" FontSize="16" VerticalOptions="Center" WidthRequest="200" />
+                        <Button Text="Удалить" Clicked="OnDeleteTaskClicked" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
